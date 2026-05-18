@@ -43,7 +43,7 @@
         <div class="hero-copy">
           <p class="eyebrow">PDF.Richology</p>
           <h2 data-i18n="heroTitle">几秒钟，把图片变成正式 PDF</h2>
-          <p data-i18n="heroCopy">多图上传、拖拽排序、旋转校正和本地导出都在浏览器里完成，Papery 会帮你把散落的图片整理成清爽文档。</p>
+          <p data-i18n="heroCopy">多图上传、拖拽排序、旋转校正和本地导出都在浏览器里完成，把散落的图片整理成清爽文档。</p>
           <div class="feature-row" aria-label="features">
             <span><i class="icon-upload" aria-hidden="true"></i><span data-i18n="featureUpload">多图上传</span></span>
             <span><i class="icon-stack" aria-hidden="true"></i><span data-i18n="featureMerge">一键合并</span></span>
@@ -61,14 +61,6 @@
             <i></i>
             <i></i>
           </div>
-          <div class="papery papery-hero">
-            <span class="papery-fold"></span>
-            <span class="papery-face"></span>
-            <span class="papery-arm left"></span>
-            <span class="papery-arm right"></span>
-            <span class="papery-foot left"></span>
-            <span class="papery-foot right"></span>
-          </div>
         </div>
       </section>
 
@@ -76,7 +68,7 @@
         <aside class="upload-panel">
           <div class="panel-heading">
             <span class="panel-kicker" data-i18n="uploadPanelKicker">收集图片</span>
-            <h2 data-i18n="uploadPanelTitle">把图片交给 Papery</h2>
+            <h2 data-i18n="uploadPanelTitle">把图片放进工作台</h2>
           </div>
 
           <!-- Upload Zone -->
@@ -93,14 +85,6 @@
           </div>
 
           <div class="privacy-note">
-            <div class="papery papery-small" aria-hidden="true">
-              <span class="papery-fold"></span>
-              <span class="papery-face"></span>
-              <span class="papery-arm left"></span>
-              <span class="papery-arm right"></span>
-              <span class="papery-foot left"></span>
-              <span class="papery-foot right"></span>
-            </div>
             <p data-i18n="privacyNote">图片只在本机浏览器处理，不会上传到服务器。</p>
           </div>
         </aside>
@@ -177,16 +161,7 @@
 
   <!-- ==================== Loading Overlay ==================== -->
   <div id="loadingOverlay" class="loading-overlay">
-    <div class="loading-mascot" aria-hidden="true">
-      <div class="papery papery-loading">
-        <span class="papery-fold"></span>
-        <span class="papery-face"></span>
-        <span class="papery-arm left"></span>
-        <span class="papery-arm right"></span>
-        <span class="papery-foot left"></span>
-        <span class="papery-foot right"></span>
-      </div>
-    </div>
+    <div class="loading-spinner" aria-hidden="true"></div>
     <p id="loadingText" data-i18n="exporting">正在生成 PDF...</p>
   </div>
 
