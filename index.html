@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="免费在线图片合成 PDF 工具 · 纯本地处理，无需上传，保护隐私">
+  <meta name="description" content="Free online tool to merge images into PDF · Fully local, no upload, privacy protected" lang="en">
+  <title>图片合成 PDF</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📄</text></svg>">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app-container">
+
+    <!-- ==================== Header ==================== -->
+    <header>
+      <div class="logo">
+        <span class="logo-icon">&#x1f5bc;</span>
+        <h1 data-i18n="title">图片合成 PDF</h1>
+      </div>
+      <div class="header-actions">
+        <button id="clearAll" class="btn-text" data-i18n="clearAll">清空全部</button>
+        <button id="langToggle" class="btn-text">English</button>
+      </div>
+    </header>
+
+    <!-- ==================== Main ==================== -->
+    <main>
+
+      <!-- Upload Zone -->
+      <div id="dropZone" class="drop-zone">
+        <div class="drop-zone-content">
+          <div class="upload-icon">&#x1f4c1;</div>
+          <p data-i18n="uploadHint">拖拽图片到此处，或点击上传</p>
+          <button id="uploadBtn" class="btn-primary" data-i18n="uploadButton">选择图片</button>
+          <input type="file" id="fileInput" accept="image/*" multiple hidden>
+        </div>
+        <div class="drop-overlay" data-i18n="dropHint">松开以添加图片</div>
+      </div>
+
+      <!-- Toolbar -->
+      <div class="toolbar">
+        <span id="imageCount" class="image-count" data-i18n="imageCount">已添加 0 张图片</span>
+      </div>
+
+      <!-- Thumbnail Grid -->
+      <div id="thumbnailGrid" class="thumbnail-grid">
+        <div class="empty-state" data-i18n="emptyHint">暂无图片，请先上传</div>
+      </div>
+
+      <!-- Settings -->
+      <div class="settings">
+        <div class="setting-group">
+          <label for="pageSize" data-i18n="pageSize">页面尺寸</label>
+          <select id="pageSize">
+            <option value="a4" data-i18n="pageSizeA4">A4</option>
+            <option value="letter" data-i18n="pageSizeLetter">Letter</option>
+            <option value="original" data-i18n="pageSizeOriginal">原图尺寸</option>
+          </select>
+        </div>
+        <div class="setting-group">
+          <label for="quality" data-i18n="quality">图片质量</label>
+          <select id="quality">
+            <option value="0.92" data-i18n="qualityHigh">高</option>
+            <option value="0.7" selected data-i18n="qualityMedium">中</option>
+            <option value="0.4" data-i18n="qualityLow">低</option>
+          </select>
+        </div>
+        <div class="setting-group">
+          <label for="pageNumberToggle" data-i18n="pageNumber">页码</label>
+          <select id="pageNumberToggle">
+            <option value="on" data-i18n="pageNumberOn">开启</option>
+            <option value="off" selected data-i18n="pageNumberOff">关闭</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Export -->
+      <div class="export-section">
+        <button id="exportBtn" class="btn-export" data-i18n="exportPDF">导出 PDF</button>
+      </div>
+
+    </main>
+
+    <!-- ==================== Footer ==================== -->
+    <footer>
+      <p data-i18n="footer">PDF工具 · 纯本地处理 · 您的图片不会离开浏览器</p>
+    </footer>
+
+  </div>
+
+  <!-- ==================== Loading Overlay ==================== -->
+  <div id="loadingOverlay" class="loading-overlay">
+    <div class="loading-spinner"></div>
+    <p id="loadingText" data-i18n="exporting">正在生成 PDF...</p>
+  </div>
+
+  <!-- ==================== Toast ==================== -->
+  <div id="toast" class="toast" role="alert"></div>
+
+  <!-- ==================== Scripts ==================== -->
+  <script src="js/vendor/jspdf.umd.min.js"></script>
+  <script src="js/vendor/Sortable.min.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
