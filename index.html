@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="免费在线图片合成 PDF 工具 · 纯本地处理，无需上传，保护隐私">
   <meta name="description" content="Free online tool to merge images into PDF · Fully local, no upload, privacy protected" lang="en">
-  <title>图片合成 PDF</title>
+  <title>PDF.Richology</title>
 
   <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📄</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'%3E%3Crect width='96' height='96' rx='24' fill='%233B82F6'/%3E%3Cpath d='M28 24h28c12 0 20 8 20 19s-8 19-20 19H44v18H28V24zm16 14v10h11c3 0 5-2 5-5s-2-5-5-5H44z' fill='%23F8FAFC'/%3E%3Cpath d='M18 30h8v6h-8zm0 14h8v6h-8zm0 14h8v6h-8z' fill='%23BFDBFE'/%3E%3C/svg%3E">
 
   <!-- Styles -->
   <link rel="stylesheet" href="css/style.css">
@@ -17,10 +17,18 @@
   <div class="app-container">
 
     <!-- ==================== Header ==================== -->
-    <header>
+    <header class="app-header">
       <div class="logo">
-        <span class="logo-icon">&#x1f5bc;</span>
-        <h1 data-i18n="title">图片合成 PDF</h1>
+        <span class="brand-mark" aria-hidden="true">
+          <span class="brand-mark-line"></span>
+          <span class="brand-mark-line"></span>
+          <span class="brand-mark-line"></span>
+          <span class="brand-mark-p">P</span>
+        </span>
+        <div>
+          <h1>PDF.Richology</h1>
+          <p class="brand-subtitle" data-i18n="subtitle">免费 · 纯本地处理 · 无需上传</p>
+        </div>
       </div>
       <div class="header-actions">
         <button id="clearAll" class="btn-text" data-i18n="clearAll">清空全部</button>
@@ -31,71 +39,154 @@
     <!-- ==================== Main ==================== -->
     <main>
 
-      <!-- Upload Zone -->
-      <div id="dropZone" class="drop-zone">
-        <div class="drop-zone-content">
-          <div class="upload-icon">&#x1f4c1;</div>
-          <p data-i18n="uploadHint">拖拽图片到此处，或点击上传</p>
-          <button id="uploadBtn" class="btn-primary" data-i18n="uploadButton">选择图片</button>
-          <input type="file" id="fileInput" accept="image/*" multiple hidden>
+      <section class="product-hero" aria-label="PDF.Richology">
+        <div class="hero-copy">
+          <p class="eyebrow">PDF.Richology</p>
+          <h2 data-i18n="heroTitle">几秒钟，把图片变成正式 PDF</h2>
+          <p data-i18n="heroCopy">多图上传、拖拽排序、旋转校正和本地导出都在浏览器里完成，Papery 会帮你把散落的图片整理成清爽文档。</p>
+          <div class="feature-row" aria-label="features">
+            <span><i class="icon-upload" aria-hidden="true"></i><span data-i18n="featureUpload">多图上传</span></span>
+            <span><i class="icon-stack" aria-hidden="true"></i><span data-i18n="featureMerge">一键合并</span></span>
+            <span><i class="icon-grid" aria-hidden="true"></i><span data-i18n="featureSort">智能排序</span></span>
+            <span><i class="icon-bolt" aria-hidden="true"></i><span data-i18n="featureFast">快速生成</span></span>
+          </div>
         </div>
-        <div class="drop-overlay" data-i18n="dropHint">松开以添加图片</div>
-      </div>
-
-      <!-- Toolbar -->
-      <div class="toolbar">
-        <span id="imageCount" class="image-count" data-i18n="imageCount">已添加 0 张图片</span>
-      </div>
-
-      <!-- Thumbnail Grid -->
-      <div id="thumbnailGrid" class="thumbnail-grid">
-        <div class="empty-state" data-i18n="emptyHint">暂无图片，请先上传</div>
-      </div>
-
-      <!-- Settings -->
-      <div class="settings">
-        <div class="setting-group">
-          <label for="pageSize" data-i18n="pageSize">页面尺寸</label>
-          <select id="pageSize">
-            <option value="a4" data-i18n="pageSizeA4">A4</option>
-            <option value="letter" data-i18n="pageSizeLetter">Letter</option>
-            <option value="original" data-i18n="pageSizeOriginal">原图尺寸</option>
-          </select>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="flying-card card-one"></div>
+          <div class="flying-card card-two"></div>
+          <div class="flying-card card-three"></div>
+          <div class="pdf-sheet">
+            <span>PDF</span>
+            <i></i>
+            <i></i>
+            <i></i>
+          </div>
+          <div class="papery papery-hero">
+            <span class="papery-fold"></span>
+            <span class="papery-face"></span>
+            <span class="papery-arm left"></span>
+            <span class="papery-arm right"></span>
+            <span class="papery-foot left"></span>
+            <span class="papery-foot right"></span>
+          </div>
         </div>
-        <div class="setting-group">
-          <label for="quality" data-i18n="quality">图片质量</label>
-          <select id="quality">
-            <option value="0.92" data-i18n="qualityHigh">高</option>
-            <option value="0.7" selected data-i18n="qualityMedium">中</option>
-            <option value="0.4" data-i18n="qualityLow">低</option>
-          </select>
-        </div>
-        <div class="setting-group">
-          <label for="pageNumberToggle" data-i18n="pageNumber">页码</label>
-          <select id="pageNumberToggle">
-            <option value="on" data-i18n="pageNumberOn">开启</option>
-            <option value="off" selected data-i18n="pageNumberOff">关闭</option>
-          </select>
-        </div>
-      </div>
+      </section>
 
-      <!-- Export -->
-      <div class="export-section">
-        <button id="exportBtn" class="btn-export" data-i18n="exportPDF">导出 PDF</button>
-      </div>
+      <section class="workspace-shell" aria-label="PDF workspace">
+        <aside class="upload-panel">
+          <div class="panel-heading">
+            <span class="panel-kicker" data-i18n="uploadPanelKicker">收集图片</span>
+            <h2 data-i18n="uploadPanelTitle">把图片交给 Papery</h2>
+          </div>
+
+          <!-- Upload Zone -->
+          <div id="dropZone" class="drop-zone">
+            <div class="drop-zone-content">
+              <div class="upload-icon" aria-hidden="true">
+                <span class="upload-picture"></span>
+              </div>
+              <p data-i18n="uploadHint">拖拽图片到此处，或点击上传</p>
+              <button id="uploadBtn" class="btn-primary" data-i18n="uploadButton">选择图片</button>
+              <input type="file" id="fileInput" accept="image/*" multiple hidden>
+            </div>
+            <div class="drop-overlay" data-i18n="dropHint">松开以添加图片</div>
+          </div>
+
+          <div class="privacy-note">
+            <div class="papery papery-small" aria-hidden="true">
+              <span class="papery-fold"></span>
+              <span class="papery-face"></span>
+              <span class="papery-arm left"></span>
+              <span class="papery-arm right"></span>
+              <span class="papery-foot left"></span>
+              <span class="papery-foot right"></span>
+            </div>
+            <p data-i18n="privacyNote">图片只在本机浏览器处理，不会上传到服务器。</p>
+          </div>
+        </aside>
+
+        <section class="preview-panel">
+          <!-- Toolbar -->
+          <div class="toolbar">
+            <div>
+              <span class="panel-kicker" data-i18n="previewKicker">PDF 预览</span>
+              <h2 data-i18n="previewTitle">拖拽缩略图调整页面顺序</h2>
+            </div>
+            <span id="imageCount" class="image-count" data-i18n="imageCount">已添加 0 张图片</span>
+          </div>
+
+          <!-- Thumbnail Grid -->
+          <div id="thumbnailGrid" class="thumbnail-grid">
+            <div class="empty-state" data-i18n="emptyHint">暂无图片，请先上传</div>
+          </div>
+        </section>
+
+        <aside class="export-panel">
+          <div class="panel-heading">
+            <span class="panel-kicker" data-i18n="exportKicker">导出设置</span>
+            <h2 data-i18n="exportTitle">生成前检查格式</h2>
+          </div>
+
+          <!-- Settings -->
+          <div class="settings">
+            <div class="setting-group">
+              <label for="pageSize" data-i18n="pageSize">页面尺寸</label>
+              <select id="pageSize">
+                <option value="a4" data-i18n="pageSizeA4">A4</option>
+                <option value="letter" data-i18n="pageSizeLetter">Letter</option>
+                <option value="original" data-i18n="pageSizeOriginal">原图尺寸</option>
+              </select>
+            </div>
+            <div class="setting-group">
+              <label for="quality" data-i18n="quality">图片质量</label>
+              <select id="quality">
+                <option value="0.92" data-i18n="qualityHigh">高</option>
+                <option value="0.7" selected data-i18n="qualityMedium">中</option>
+                <option value="0.4" data-i18n="qualityLow">低</option>
+              </select>
+            </div>
+            <div class="setting-group">
+              <label for="pageNumberToggle" data-i18n="pageNumber">页码</label>
+              <select id="pageNumberToggle">
+                <option value="on" data-i18n="pageNumberOn">开启</option>
+                <option value="off" selected data-i18n="pageNumberOff">关闭</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Export -->
+          <div class="export-section">
+            <button id="exportBtn" class="btn-export" data-i18n="exportPDF">导出 PDF</button>
+          </div>
+
+          <div class="export-hint">
+            <span class="hint-icon" aria-hidden="true"></span>
+            <p data-i18n="exportHint">支持 A4、Letter 和原图尺寸。导出完成后自动下载 PDF。</p>
+          </div>
+        </aside>
+      </section>
 
     </main>
 
     <!-- ==================== Footer ==================== -->
     <footer>
-      <p data-i18n="footer">PDF工具 · 纯本地处理 · 您的图片不会离开浏览器</p>
+      <p data-i18n="footer">PDF.Richology · 纯本地处理 · 您的图片不会离开浏览器</p>
     </footer>
 
   </div>
 
   <!-- ==================== Loading Overlay ==================== -->
   <div id="loadingOverlay" class="loading-overlay">
-    <div class="loading-spinner"></div>
+    <div class="loading-mascot" aria-hidden="true">
+      <div class="papery papery-loading">
+        <span class="papery-fold"></span>
+        <span class="papery-face"></span>
+        <span class="papery-arm left"></span>
+        <span class="papery-arm right"></span>
+        <span class="papery-foot left"></span>
+        <span class="papery-foot right"></span>
+      </div>
+    </div>
     <p id="loadingText" data-i18n="exporting">正在生成 PDF...</p>
   </div>
 
