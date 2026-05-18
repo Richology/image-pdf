@@ -1,11 +1,11 @@
 /**
- * i18n.js - Internationalization for Images to PDF tool
+ * i18n.js - Internationalization for Papery
  * Supports: Chinese (zh) and English (en), default: zh
  */
 
 const translations = {
   zh: {
-    title: 'PDF.Richology',
+    title: 'Papery',
     subtitle: '免费 · 纯本地处理 · 无需上传',
     heroTitle: '几秒钟，把图片变成正式 PDF',
     heroCopy: '多图上传、拖拽排序、旋转校正和本地导出都在浏览器里完成，把散落的图片整理成清爽文档。',
@@ -21,7 +21,7 @@ const translations = {
     exportTitle: '生成前检查格式',
     exportHint: '支持 A4、Letter 和原图尺寸。导出完成后自动下载 PDF。',
     privacyNote: '图片只在本机浏览器处理，不会上传到服务器。',
-    footer: 'PDF.Richology · 纯本地处理 · 您的图片不会离开浏览器',
+    footer: 'Papery · 纯本地处理 · 您的图片不会离开浏览器',
     uploadHint: '拖拽图片到此处，或点击上传',
     uploadButton: '选择图片',
     imageCount: '已添加 {count} 张图片',
@@ -55,7 +55,7 @@ const translations = {
     loadError: '图片加载失败：{name}',
   },
   en: {
-    title: 'PDF.Richology',
+    title: 'Papery',
     subtitle: 'Free · Fully Local · No Upload Required',
     heroTitle: 'Turn images into a polished PDF in seconds',
     heroCopy: 'Upload many images, reorder pages, rotate scans, and export locally in the browser, then turn loose images into one tidy document.',
@@ -71,7 +71,7 @@ const translations = {
     exportTitle: 'Check format before generating',
     exportHint: 'Supports A4, Letter, and original image sizes. The PDF downloads automatically when ready.',
     privacyNote: 'Images are processed in this browser and never uploaded to a server.',
-    footer: 'PDF.Richology · 100% local processing · Your images never leave your browser',
+    footer: 'Papery · 100% local processing · Your images never leave your browser',
     uploadHint: 'Drag & drop images here, or click to upload',
     uploadButton: 'Select Images',
     imageCount: '{count} image(s) added',
