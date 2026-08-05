@@ -42,6 +42,7 @@
       loadingOverlay: document.getElementById('loadingOverlay'),
       loadingText: document.getElementById('loadingText'),
       toast: document.getElementById('toast'),
+      workspace: document.querySelector('.workspace-shell'),
     };
   }
 
@@ -130,6 +131,13 @@
     if (state.isProcessing) return;
     const fileArray = Array.from(files);
 
+    if (fileArray.length === 0) return;
+
+    // Give immediate feedback after a file is selected, even while images are decoding.
+    els.workspace.classList.add('has-images');
+    document.body.classList.add('has-images');
+    els.grid.innerHTML = `<div class="empty-state">${t('loadingImages')}</div>`;
+
     if (state.images.length + fileArray.length > MAX_IMAGES) {
       showToast(t('maxImagesWarning'), 'info');
       // Only take the allowed number
@@ -147,6 +155,9 @@
       state.images.push(...validImages);
       renderThumbnails();
       updateImageCount();
+    } else if (state.images.length === 0) {
+      els.workspace.classList.remove('has-images');
+      document.body.classList.remove('has-images');
     }
 
     state.isProcessing = false;
@@ -246,6 +257,8 @@
 
   function updateExportButton() {
     els.exportBtn.disabled = state.images.length === 0;
+    els.workspace.classList.toggle('has-images', state.images.length > 0);
+    document.body.classList.toggle('has-images', state.images.length > 0);
   }
 
   /** Minimal HTML escaping */
@@ -476,6 +489,7 @@
 
     // Click on drop zone (except when clicking button inside it)
     els.dropZone.addEventListener('click', (e) => {
+      if (e.target === els.fileInput) return;
       if (e.target.closest('#uploadBtn')) return;
       if (e.target.closest('.drop-overlay')) return;
       els.fileInput.click();
