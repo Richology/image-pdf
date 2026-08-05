@@ -3,172 +3,91 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Papery · 几秒钟，把图片变成正式 PDF · 纯本地处理，无需上传，保护隐私">
-  <meta name="description" content="Papery · Turn images into a polished PDF in seconds · Fully local, no upload, privacy protected" lang="en">
-  <title>Papery</title>
-
-  <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'%3E%3Crect width='96' height='96' rx='24' fill='%233B82F6'/%3E%3Cpath d='M28 24h28c12 0 20 8 20 19s-8 19-20 19H44v18H28V24zm16 14v10h11c3 0 5-2 5-5s-2-5-5-5H44z' fill='%23F8FAFC'/%3E%3Cpath d='M18 30h8v6h-8zm0 14h8v6h-8zm0 14h8v6h-8z' fill='%23BFDBFE'/%3E%3C/svg%3E">
-
-  <!-- Styles -->
-  <link rel="stylesheet" href="css/style.css">
+  <meta name="description" content="在线处理 PDF 和图片文件，提供转换、合并、压缩等简单工具。">
+  <meta property="og:title" content="Papery - 简单快速的 PDF 工具">
+  <meta property="og:description" content="在线处理 PDF 和图片文件，提供转换、合并、压缩等简单工具。">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Papery">
+  <title>Papery - 简单快速的 PDF 工具</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230071E3'/%3E%3Cpath d='M19 14h18l9 9v27H19V14zm17 1v10h9' fill='none' stroke='white' stroke-width='4' stroke-linejoin='round'/%3E%3Cpath d='M25 36h15M25 43h11' stroke='white' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/style.css?v=2">
 </head>
 <body>
-  <div class="app-container">
+  <header class="app-header">
+    <a class="logo" href="#top" aria-label="Papery">
+      <span class="brand-mark" aria-hidden="true">P</span>
+      <span>Papery</span>
+    </a>
+    <nav class="primary-nav" aria-label="Primary navigation">
+      <button id="langToggle" class="lang-toggle" type="button">English</button>
+    </nav>
+  </header>
 
-    <!-- ==================== Header ==================== -->
-    <header class="app-header">
-      <div class="logo">
-        <span class="brand-mark" aria-hidden="true">
-          <span class="brand-mark-line"></span>
-          <span class="brand-mark-line"></span>
-          <span class="brand-mark-line"></span>
-          <span class="brand-mark-p">P</span>
-        </span>
-        <div>
-          <h1>Papery</h1>
-          <p class="brand-subtitle" data-i18n="subtitle">免费 · 纯本地处理 · 无需上传</p>
-        </div>
+  <main id="top">
+    <section class="product-hero" aria-labelledby="heroTitle">
+      <div class="hero-copy">
+        <h1 id="heroTitle" data-i18n="heroTitle">几秒钟，把图片变成正式 PDF</h1>
+        <p data-i18n="heroCopy">多图上传、排序、旋转与本地导出，都在浏览器中完成。</p>
       </div>
-      <div class="header-actions">
-        <button id="clearAll" class="btn-text" data-i18n="clearAll">清空全部</button>
-        <button id="langToggle" class="btn-text">English</button>
-      </div>
-    </header>
+      <figure class="hero-art">
+        <img src="assets/pdf-hero.png" alt="PDF 文件插图">
+      </figure>
+    </section>
 
-    <!-- ==================== Main ==================== -->
-    <main>
-
-      <section class="product-hero" aria-label="Papery">
-        <div class="hero-copy">
-          <p class="eyebrow">Papery</p>
-          <h2 data-i18n="heroTitle">几秒钟，把图片变成正式 PDF</h2>
-          <p data-i18n="heroCopy">多图上传、拖拽排序、旋转校正和本地导出都在浏览器里完成，把散落的图片整理成清爽文档。</p>
-          <div class="feature-row" aria-label="features">
-            <span><i class="icon-upload" aria-hidden="true"></i><span data-i18n="featureUpload">多图上传</span></span>
-            <span><i class="icon-stack" aria-hidden="true"></i><span data-i18n="featureMerge">一键合并</span></span>
-            <span><i class="icon-grid" aria-hidden="true"></i><span data-i18n="featureSort">智能排序</span></span>
-            <span><i class="icon-bolt" aria-hidden="true"></i><span data-i18n="featureFast">快速生成</span></span>
-          </div>
-        </div>
-        <div class="hero-visual" aria-hidden="true">
-          <div class="flying-card card-one"></div>
-          <div class="flying-card card-two"></div>
-          <div class="flying-card card-three"></div>
-          <div class="pdf-sheet">
-            <span>PDF</span>
-            <i></i>
-            <i></i>
-            <i></i>
-          </div>
-        </div>
-      </section>
-
-      <section class="workspace-shell" aria-label="PDF workspace">
-        <aside class="upload-panel">
-          <div class="panel-heading">
-            <span class="panel-kicker" data-i18n="uploadPanelKicker">收集图片</span>
-            <h2 data-i18n="uploadPanelTitle">把图片放进工作台</h2>
-          </div>
-
-          <!-- Upload Zone -->
-          <div id="dropZone" class="drop-zone">
-            <div class="drop-zone-content">
-              <div class="upload-icon" aria-hidden="true">
-                <span class="upload-picture"></span>
-              </div>
-              <p data-i18n="uploadHint">拖拽图片到此处，或点击上传</p>
-              <button id="uploadBtn" class="btn-primary" data-i18n="uploadButton">选择图片</button>
-              <input type="file" id="fileInput" accept="image/*" multiple hidden>
+    <section id="workspace" class="workspace-shell" aria-label="PDF workspace">
+      <aside class="upload-panel">
+        <p class="panel-kicker" data-i18n="uploadPanelKicker">添加文件</p>
+        <h2 data-i18n="uploadPanelTitle">图片转 PDF</h2>
+        <div id="dropZone" class="drop-zone" aria-describedby="privacyNote">
+          <div class="drop-zone-content">
+            <div class="upload-icon" aria-hidden="true">
+              <svg viewBox="0 0 56 64" fill="none"><path d="M10 2h24l12 12v48H10V2Z" fill="white" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M34 2v13h12M18 33h20M18 42h15" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
-            <div class="drop-overlay" data-i18n="dropHint">松开以添加图片</div>
+            <p id="uploadCardTitle" data-i18n="uploadHint">拖放图片到这里</p>
+            <span class="upload-or" data-i18n="uploadOr">或者</span>
+            <button id="uploadBtn" class="btn-primary" type="button" data-i18n="uploadButton">选择文件</button>
+            <input type="file" id="fileInput" accept="image/*" multiple hidden>
           </div>
-
-          <div class="privacy-note">
-            <p data-i18n="privacyNote">图片只在本机浏览器处理，不会上传到服务器。</p>
+          <div class="drop-overlay" data-i18n="dropHint">松开以添加图片</div>
+        </div>
+        <p id="privacyNote" class="privacy-note" data-i18n="privacyNote">文件只在本机浏览器处理，不会上传到服务器。</p>
+      </aside>
+      <section class="preview-panel">
+        <div class="toolbar">
+          <div>
+            <p class="panel-kicker" data-i18n="previewKicker">文件预览</p>
+            <h2 data-i18n="previewTitle">拖拽缩略图调整页面顺序</h2>
           </div>
-        </aside>
-
-        <section class="preview-panel">
-          <!-- Toolbar -->
-          <div class="toolbar">
-            <div>
-              <span class="panel-kicker" data-i18n="previewKicker">PDF 预览</span>
-              <h2 data-i18n="previewTitle">拖拽缩略图调整页面顺序</h2>
-            </div>
+          <div class="workspace-actions">
             <span id="imageCount" class="image-count" data-i18n="imageCount">已添加 0 张图片</span>
+            <button id="clearAll" class="btn-text" type="button" data-i18n="clearAll">清空</button>
           </div>
-
-          <!-- Thumbnail Grid -->
-          <div id="thumbnailGrid" class="thumbnail-grid">
-            <div class="empty-state" data-i18n="emptyHint">暂无图片，请先上传</div>
-          </div>
-        </section>
-
-        <aside class="export-panel">
-          <div class="panel-heading">
-            <span class="panel-kicker" data-i18n="exportKicker">导出设置</span>
-            <h2 data-i18n="exportTitle">生成前检查格式</h2>
-          </div>
-
-          <!-- Settings -->
-          <div class="settings">
-            <div class="setting-group">
-              <label for="pageSize" data-i18n="pageSize">页面尺寸</label>
-              <select id="pageSize">
-                <option value="a4" data-i18n="pageSizeA4">A4</option>
-                <option value="letter" data-i18n="pageSizeLetter">Letter</option>
-                <option value="original" data-i18n="pageSizeOriginal">原图尺寸</option>
-              </select>
-            </div>
-            <div class="setting-group">
-              <label for="quality" data-i18n="quality">图片质量</label>
-              <select id="quality">
-                <option value="0.92" data-i18n="qualityHigh">高</option>
-                <option value="0.7" selected data-i18n="qualityMedium">中</option>
-                <option value="0.4" data-i18n="qualityLow">低</option>
-              </select>
-            </div>
-            <div class="setting-group">
-              <label for="pageNumberToggle" data-i18n="pageNumber">页码</label>
-              <select id="pageNumberToggle">
-                <option value="on" data-i18n="pageNumberOn">开启</option>
-                <option value="off" selected data-i18n="pageNumberOff">关闭</option>
-              </select>
-            </div>
-          </div>
-
-          <!-- Export -->
-          <div class="export-section">
-            <button id="exportBtn" class="btn-export" data-i18n="exportPDF">导出 PDF</button>
-          </div>
-
-          <div class="export-hint">
-            <span class="hint-icon" aria-hidden="true"></span>
-            <p data-i18n="exportHint">支持 A4、Letter 和原图尺寸。导出完成后自动下载 PDF。</p>
-          </div>
-        </aside>
+        </div>
+        <div id="thumbnailGrid" class="thumbnail-grid">
+          <div class="empty-state" data-i18n="emptyHint">选择图片后，它们会显示在这里</div>
+        </div>
       </section>
 
-    </main>
+      <aside class="export-panel">
+        <div class="panel-heading">
+          <p class="panel-kicker" data-i18n="exportKicker">导出设置</p>
+          <h2 data-i18n="exportTitle">生成 PDF</h2>
+        </div>
+        <div class="settings">
+          <div class="setting-group"><label for="pageSize" data-i18n="pageSize">页面尺寸</label><select id="pageSize"><option value="a4" data-i18n="pageSizeA4">A4</option><option value="letter" data-i18n="pageSizeLetter">Letter</option><option value="original" data-i18n="pageSizeOriginal">原图尺寸</option></select></div>
+          <div class="setting-group"><label for="quality" data-i18n="quality">图片质量</label><select id="quality"><option value="0.92" data-i18n="qualityHigh">高</option><option value="0.7" selected data-i18n="qualityMedium">推荐</option><option value="0.4" data-i18n="qualityLow">低</option></select><p class="setting-note" data-i18n="qualityHint">推荐：平衡清晰度与文件大小</p></div>
+          <div class="setting-group"><label for="pageNumberToggle" data-i18n="pageNumber">页码</label><select id="pageNumberToggle"><option value="on" data-i18n="pageNumberOn">开启</option><option value="off" selected data-i18n="pageNumberOff">关闭</option></select></div>
+        </div>
+        <div class="export-section"><button id="exportBtn" class="btn-export" type="button" data-i18n="exportPDF">导出 PDF</button></div>
+        <p class="export-empty-hint" data-i18n="exportEmptyHint">添加图片后，即可调整导出设置。</p>
+        <p class="export-hint" data-i18n="exportHint">支持 A4、Letter 和原图尺寸。导出完成后自动下载 PDF。</p>
+      </aside>
+    </section>
+  </main>
 
-    <!-- ==================== Footer ==================== -->
-    <footer>
-      <p data-i18n="footer">Papery · 纯本地处理 · 您的图片不会离开浏览器</p>
-    </footer>
-
-  </div>
-
-  <!-- ==================== Loading Overlay ==================== -->
-  <div id="loadingOverlay" class="loading-overlay">
-    <div class="loading-spinner" aria-hidden="true"></div>
-    <p id="loadingText" data-i18n="exporting">正在生成 PDF...</p>
-  </div>
-
-  <!-- ==================== Toast ==================== -->
+  <footer id="about"><p data-i18n="footer">Papery · 纯本地处理 · 您的文件不会离开浏览器</p></footer>
+  <div id="loadingOverlay" class="loading-overlay"><div class="loading-spinner" aria-hidden="true"></div><p id="loadingText" data-i18n="exporting">正在生成 PDF...</p></div>
   <div id="toast" class="toast" role="alert"></div>
-
-  <!-- ==================== Scripts ==================== -->
   <script src="js/vendor/jspdf.umd.min.js"></script>
   <script src="js/vendor/Sortable.min.js"></script>
   <script src="js/i18n.js"></script>
