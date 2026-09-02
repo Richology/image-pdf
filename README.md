@@ -9,9 +9,11 @@
 Papery is a free, lightweight image-to-PDF tool. Add multiple images, arrange them in the right order, rotate them when needed, and export a polished PDF without uploading your files to a server.
 
 <p align="center">
-  <img src="assets/image-icon.png" width="112" alt="Images">
-  &nbsp;&nbsp;&nbsp; ➜ &nbsp;&nbsp;&nbsp;
-  <img src="assets/pdf-hero.png" width="96" alt="PDF">
+  <img src="assets/image-icon.png" width="180" align="middle" alt="Images">
+  &nbsp;&nbsp;
+  <img src="assets/arrow-right.svg" width="56" align="middle" alt="converts to">
+  &nbsp;&nbsp;
+  <img src="assets/pdf-hero.png" width="160" align="middle" alt="PDF">
 </p>
 
 ## Why I built Papery

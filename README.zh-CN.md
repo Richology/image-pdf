@@ -9,9 +9,11 @@
 Papery 是一个免费、轻量的图片转 PDF 工具。你可以添加多张图片、调整页面顺序、旋转图片，再导出一份整洁的 PDF。整个过程不需要把文件上传到服务器。
 
 <p align="center">
-  <img src="assets/image-icon.png" width="112" alt="图片">
-  &nbsp;&nbsp;&nbsp; ➜ &nbsp;&nbsp;&nbsp;
-  <img src="assets/pdf-hero.png" width="96" alt="PDF">
+  <img src="assets/image-icon.png" width="180" align="middle" alt="图片">
+  &nbsp;&nbsp;
+  <img src="assets/arrow-right.svg" width="56" align="middle" alt="转换为">
+  &nbsp;&nbsp;
+  <img src="assets/pdf-hero.png" width="160" align="middle" alt="PDF">
 </p>
 
 ## 我为什么做 Papery
