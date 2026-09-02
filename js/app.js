@@ -134,6 +134,7 @@
     if (fileArray.length === 0) return;
 
     // Give immediate feedback after a file is selected, even while images are decoding.
+    document.body.classList.remove('view-home');
     els.workspace.classList.add('has-images');
     document.body.classList.add('has-images');
     els.grid.innerHTML = `<div class="empty-state">${t('loadingImages')}</div>`;
@@ -477,15 +478,17 @@
     // Keep in-page navigation reliable with the sticky header and repeated clicks.
     document.querySelectorAll('.logo[href^="#"], .primary-nav a[href^="#"]').forEach((link) => {
       link.addEventListener('click', (e) => {
-        const target = document.querySelector(link.getAttribute('href'));
+        const href = link.getAttribute('href');
+        const target = document.querySelector(href);
         if (!target) return;
 
         e.preventDefault();
+        document.body.classList.toggle('view-home', href === '#top');
         target.scrollIntoView({
           behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
           block: 'start',
         });
-        window.history.replaceState(null, '', link.getAttribute('href'));
+        window.history.replaceState(null, '', href);
       });
     });
 
