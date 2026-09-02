@@ -8,7 +8,11 @@
 
 Papery 是一个免费、轻量的图片转 PDF 工具。你可以添加多张图片、调整页面顺序、旋转图片，再导出一份整洁的 PDF。整个过程不需要把文件上传到服务器。
 
-![Papery 插图](assets/pdf-hero.png)
+<p align="center">
+  <img src="assets/image-icon.png" width="112" alt="图片">
+  &nbsp;&nbsp;&nbsp; ➜ &nbsp;&nbsp;&nbsp;
+  <img src="assets/pdf-hero.png" width="96" alt="PDF">
+</p>
 
 ## 我为什么做 Papery
 
@@ -56,9 +60,21 @@ Papery 是一个免费、轻量的图片转 PDF 工具。你可以添加多张�
 4. 选择页面尺寸、图片质量和是否显示页码。
 5. 点击“导出 PDF”，下载整理好的文件。
 
-## 本地运行
+## 安装与运行
 
-Papery 是一个不需要构建步骤的静态网页应用。克隆仓库后，使用任意本地 HTTP 服务启动即可：
+Papery 是一个不需要构建步骤的静态网页应用。
+
+### 使用编程 Agent
+
+把仓库地址发给 Codex、Claude Code 或你正在使用的其他编程 Agent，让它克隆并运行项目：
+
+```text
+请克隆并在本地运行这个项目：https://github.com/Richology/image-pdf
+```
+
+### 使用命令行
+
+克隆仓库后，使用任意本地 HTTP 服务启动即可：
 
 ```bash
 git clone https://github.com/Richology/image-pdf.git
@@ -80,3 +96,6 @@ python3 -m http.server 8000
 
 提交 Pull Request 时，请尽量保持改动聚焦，说明它解决的问题，并在现代浏览器中完整测试图片转 PDF 流程。
 
+## 开源许可
+
+Papery 使用 [MIT License](LICENSE) 开源。你可以按照该许可证的条款使用、修改和分发本项目。仓库中包含的第三方库仍遵循各自的许可证。

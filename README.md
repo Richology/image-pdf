@@ -8,7 +8,11 @@
 
 Papery is a free, lightweight image-to-PDF tool. Add multiple images, arrange them in the right order, rotate them when needed, and export a polished PDF without uploading your files to a server.
 
-![Papery illustration](assets/pdf-hero.png)
+<p align="center">
+  <img src="assets/image-icon.png" width="112" alt="Images">
+  &nbsp;&nbsp;&nbsp; ➜ &nbsp;&nbsp;&nbsp;
+  <img src="assets/pdf-hero.png" width="96" alt="PDF">
+</p>
 
 ## Why I built Papery
 
@@ -56,9 +60,21 @@ This also means that processing speed and memory usage depend on your device, es
 4. Choose the page size, image quality, and page-number preference.
 5. Click **Export PDF** to download the finished document.
 
-## Run locally
+## Install and run
 
-Papery is a static web app with no build step. Clone the repository and serve the directory with any local HTTP server:
+Papery is a static web app with no build step.
+
+### With a coding agent
+
+Paste the repository URL into Codex, Claude Code, or another coding agent and ask it to clone and run the project:
+
+```text
+Clone and run this project locally: https://github.com/Richology/image-pdf
+```
+
+### From the command line
+
+Clone the repository and serve the directory with any local HTTP server:
 
 ```bash
 git clone https://github.com/Richology/image-pdf.git
@@ -80,3 +96,6 @@ Contributions are welcome. If you have an idea, find a bug, want to improve acce
 
 For a pull request, please keep the change focused, explain the problem it solves, and test the image-to-PDF flow in a modern browser.
 
+## License
+
+Papery is released under the [MIT License](LICENSE). You may use, modify, and distribute it under the terms of that license. Third-party libraries included in this repository remain subject to their respective licenses.
