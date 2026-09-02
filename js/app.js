@@ -474,6 +474,21 @@
   // Event Binding
   // ============================================
   function bindEvents() {
+    // Keep in-page navigation reliable with the sticky header and repeated clicks.
+    document.querySelectorAll('.logo[href^="#"], .primary-nav a[href^="#"]').forEach((link) => {
+      link.addEventListener('click', (e) => {
+        const target = document.querySelector(link.getAttribute('href'));
+        if (!target) return;
+
+        e.preventDefault();
+        target.scrollIntoView({
+          behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+          block: 'start',
+        });
+        window.history.replaceState(null, '', link.getAttribute('href'));
+      });
+    });
+
     // File input
     els.fileInput.addEventListener('change', (e) => {
       if (e.target.files.length > 0) {
